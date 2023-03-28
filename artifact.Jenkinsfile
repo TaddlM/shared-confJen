@@ -29,12 +29,12 @@ pipeline {
         }
         stage('Copy artifacts') {
             steps {
-                //withCredentials([usernamePassword(credentialsId: ARTIFACTORY_ID, passwordVariable: 'ARTIFACTORY_CREDENTIALS_PSW', usernameVariable: 'ARTIFACTORY_CREDENTIALS_USR')]) {
-                script {
-                    fromJFrog.getArtifact(ARTIFACTORY_URL,EAR_REPOSITORY,EAR_GROUP_ID,EAR_ARTEFACT_ID,VERSION_PAYTRAS,EAR_CLASSIFIER)
-                    sh "ls -la"
-                }   
-                //}
+                withCredentials([usernamePassword(credentialsId: ARTIFACTORY_ID, passwordVariable: 'ARTIFACTORY_CREDENTIALS_PSW', usernameVariable: 'ARTIFACTORY_CREDENTIALS_USR')]) {
+                    script {
+                        fromJFrog.getArtifact(ARTIFACTORY_URL,EAR_REPOSITORY,EAR_GROUP_ID,EAR_ARTEFACT_ID,VERSION_PAYTRAS,EAR_CLASSIFIER)
+                        sh "ls -la"
+                    }   
+                }
             }
         }
         
