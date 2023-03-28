@@ -1,0 +1,86 @@
+<settings>
+	<mirrors>
+		<mirror>
+			<id>insure</id>
+			<mirrorOf>in*</mirrorOf>
+			<url>https://artifactory.adesso-insure.de/artifactory/ipay-maven</url>
+		</mirror>
+		<mirror>
+			<id>public</id>
+			<mirrorOf>pub*,cen*</mirrorOf>
+			<url>https://artifactory.adesso-insure.de/artifactory/public-maven</url>
+		</mirror>
+	</mirrors>
+	<profiles>
+		<profile>
+			<id>ais-artifactory</id>
+			<!--Enable snapshots for the built in central repo to direct -->
+			<!--all requests to nexus via the mirror -->
+			<repositories>
+				<repository>
+					<id>public</id>
+					<url>https://artifactory.adesso-insure.de/artifactory/public-maven</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>insure</id>
+					<!-- Repository is redirected via mirror -->
+					<url>https://artifactory.adesso-insure.de/artifactory/ipay-maven</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>public</id>
+					<url>https://artifactory.adesso-insure.de/artifactory/public-maven</url>
+					<releases>
+						<enabled>true</enabled>
+						<!-- <updatePolicy>never</updatePolicy> -->
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+						<!-- <updatePolicy>never</updatePolicy> -->
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>insure</id>
+					<url>https://artifactory.adesso-insure.de/artifactory/ipay-maven</url>
+					<releases>
+						<enabled>true</enabled>
+						<!-- <updatePolicy>never</updatePolicy> -->
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+						<!-- <updatePolicy>never</updatePolicy> -->
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
+	<servers>
+		<server>
+			<id>insure</id>
+			<username>${ARTIFACTORY_CREDENTIALS_USR}</username>
+			<password>${ARTIFACTORY_CREDENTIALS_PSW}</password>
+		</server>
+		<server>
+			<id>public</id>
+			<username>${ARTIFACTORY_CREDENTIALS_USR}</username>
+			<password>${ARTIFACTORY_CREDENTIALS_PSW}</password>
+		</server>
+	</servers>
+	<activeProfiles>
+		<!--make the profile active all the time -->
+		<activeProfile>ais-artifactory</activeProfile>
+	</activeProfiles>
+</settings>
