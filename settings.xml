@@ -70,13 +70,13 @@
 	<servers>
 		<server>
 			<id>insure</id>
-			<username>${ARTIFACTORY_CREDENTIALS_USR}</username>
-			<password>${ARTIFACTORY_CREDENTIALS_PSW}</password>
+			<username>mosko</username>
+			<password>cmVmdGtuOjAxOjE3MDc0MTE4NTI6a0hrSml2UUZRUnMyY1RLS2VrREM4c2VGQjZn</password>
 		</server>
 		<server>
 			<id>public</id>
-			<username>${ARTIFACTORY_CREDENTIALS_USR}</username>
-			<password>${ARTIFACTORY_CREDENTIALS_PSW}</password>
+			<username>mosko</username>
+			<password>cmVmdGtuOjAxOjE3MDc0MTE4NTI6a0hrSml2UUZRUnMyY1RLS2VrREM4c2VGQjZn</password>
 		</server>
 	</servers>
 	<activeProfiles>
